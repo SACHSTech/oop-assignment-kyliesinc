@@ -3,7 +3,7 @@ package Store;
 
 public class Tops extends Clothing {
 
-    public Tops(String clothType, int clothSize, String clothColour, double clothPrice){
-        super(clothType, clothSize, clothColour, clothPrice);    
+    public Tops(String clothType, int topSize, String clothColour, double clothPrice){
+        super(clothType, clothColour, clothPrice);  
     }
 }

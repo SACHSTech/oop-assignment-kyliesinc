@@ -3,7 +3,7 @@ import java.util.ArrayList;
 //import oop.*;
 
 
-public abstract class cart {
+public class cart {
     private String customer;
     private ArrayList<cart> orderCart;
     private double totalPrice;
@@ -19,8 +19,8 @@ public abstract class cart {
         return this.customer;
     }
 
-    public void addItem(cart newItem){
-        orderCart.add(newItem);
+    public void addItem(cart newClothing){
+        orderCart.add(newClothing);
     }
 
     public void removeItem(cart previousCart){
