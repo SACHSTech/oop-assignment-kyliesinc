@@ -4,16 +4,16 @@ package Store;
 
 public class customer {
      String name;
-     int shoeSize;
-     int topSize;
-     int pantSize;
+     int custShoeSize;
+     int custTopSize;
+     int custPantSize;
 
     // get name and cart for each customer
     public customer(String newName, int newShoeSize, int newTopSize, int newPantSize){
         name = newName;
-        shoeSize = newShoeSize;
-        topSize = newTopSize;
-        pantSize = newPantSize;
+        custShoeSize = newShoeSize;
+        custTopSize = newTopSize;
+        custPantSize = newPantSize;
     }
     
     // customer has a cart
