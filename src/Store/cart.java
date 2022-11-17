@@ -1,19 +1,22 @@
 package Store;
 import java.util.ArrayList;
+import java.util.*;
 //import oop.*;
 
 
 public class cart {
-    private String customer;
-    private ArrayList<cart> orderCart;
+    private Customer customer;
+    private ArrayList<Clothing> orderCart = new ArrayList<Clothing>();
     private double totalPrice;
 
     // assign customer name to their cart
-    public cart(String name){
-        this.customer = name;
-        this.totalPrice = 0;
-        orderCart = new ArrayList<cart>();
+    public cart(){
+        ArrayList<Clothing> orderCart =  new ArrayList<Clothing>();
+        Customer newCustomer = new Customer(null);
+        double totalPrice;
     }
+
+    
     
     public String getName(){
         return this.customer;
@@ -35,7 +38,7 @@ public class cart {
     public double getTotalPrice(){
         // return sum price of all items currently in the cart
         for (int i = 0; i < orderCart.size(); i++){
-            this.totalPrice = orderCart.get(i).getTotalPrice();
+            this.totalPrice += orderCart.getPrice(i);
         }
         return this.totalPrice;
     }

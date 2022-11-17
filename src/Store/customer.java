@@ -2,20 +2,16 @@ package Store;
 //import oop.*;
 
 
-public class customer {
+public class Customer {
      String name;
-     int custShoeSize;
-     int custTopSize;
-     int custPantSize;
 
     // get name and cart for each customer
-    public customer(String newName, int newShoeSize, int newTopSize, int newPantSize){
+    public Customer(String newName){
         name = newName;
-        custShoeSize = newShoeSize;
-        custTopSize = newTopSize;
-        custPantSize = newPantSize;
+    }
+
+    public String getName(){
+        return name;
     }
     
-    // customer has a cart
-
 }
