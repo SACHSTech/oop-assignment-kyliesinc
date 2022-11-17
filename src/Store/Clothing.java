@@ -1,6 +1,5 @@
 package Store;
-import oop.*;
-
+//import oop.*;
 
 public class Clothing {
     // private variables 
