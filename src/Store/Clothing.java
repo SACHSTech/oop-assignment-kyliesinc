@@ -4,20 +4,20 @@ import oop.*;
 
 public class Clothing {
     // private variables 
-    private String size;
+    private int size;
     private String colour;
 
-    public Clothing(String clothSize, String clothColour){
-        size = clothSize;
-        colour = clothColour;
+    public Clothing(int clothSize, String clothColour){
+        this.size = clothSize;
+        this.colour = clothColour;
     }
 
-    public String getSize({
-        return size;
+    public String getSize() {
+        return this.size;
     }
 
-    public String getColour({
-        return colour;
+    public String getColour() {
+        return this.colour;
     }
 
 
