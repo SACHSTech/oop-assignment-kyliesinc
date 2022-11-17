@@ -8,9 +8,9 @@ public abstract class Clothing {
     private double price;
 
     public Clothing(String clothType, String clothColour, double clothPrice){
-        type = clothType;
-        colour = clothColour;
-        price = clothPrice;
+        this.type = clothType;
+        this.colour = clothColour;
+        this.price = clothPrice;
     }
 
     public String getType(){
