@@ -47,6 +47,11 @@ public abstract class cart {
         System.out.println("Total: "+ Math.round((this.totalPrice*1.13)*100)/100);
     }
 
+    public void checkOut(){
+        // use total and ask customer to pay
+        // once payed == true, say thank you for shopping!
+    }
+
     
 
 
