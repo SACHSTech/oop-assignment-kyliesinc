@@ -2,21 +2,21 @@ package Store;
 //import oop.*;
 
 public class Tops extends Clothing {
-    private String size;
-    private String type;
+    private String tSize;
+    private String tType;
 
     public Tops(String clothType, String clothColour, double clothPrice, String topSize, String topType){
         super(clothType, clothColour, clothPrice);  
-        this.size = topSize;
-        this.type = topType;
+        this.tSize = topSize;
+        this.tType = topType;
     }
 
     public String getSize(){
-        return this.size;
+        return this.tSize;
     }
 
     public String getType(){
-        return this.type;
+        return this.tType;
     }
 
     public String toString(){

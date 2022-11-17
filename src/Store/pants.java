@@ -2,14 +2,26 @@ package Store;
 //import oop.*;
 
 public class Pants extends Clothing{
-    private int pantSize;
+    private int pSize;
+    private String pType;
     
-    public Pants(String clothType, int pantSize, String clothColour, double clothPrice){
-        super(clothType, clothColour, clothPrice);   
-
-        // is there some way to use the customer variables in the pants class
-        custPantSize = pantSize;
-        
-         
+    public Pants(String clothType, String clothColour, double clothPrice, int pantSize, String pantType){
+        super(clothType, clothColour, clothPrice);  
+        this.pSize = pantSize;
+        this.pType = pantType;
+          
     }
+
+    public double getSize(){
+        return this.pSize;
+    }
+
+    public String getType(){
+        return this.pType;
+    }
+    
+    public String toString(){
+        return "...";
+    }
+
 }

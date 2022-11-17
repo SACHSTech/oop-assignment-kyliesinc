@@ -2,21 +2,21 @@ package Store;
 //import oop.*;
 
 public class Shoes extends Clothing {
-    private double size;
-    private String model;
+    private double sSize;
+    private String sModel;
    
     public Shoes(String clothType, String clothColour, double clothPrice, double shoeSize, String shoeModel){
         super(clothType, clothColour, clothPrice);  
-        this.size = shoeSize;
-        this.model = shoeModel;  
+        this.sSize = shoeSize;
+        this.sModel = shoeModel;  
     }
 
     public double getSize(){
-        return this.size;
+        return this.sSize;
     }
 
     public String getModel(){
-        return this.model;
+        return this.sModel;
     }
     
     public String toString(){
