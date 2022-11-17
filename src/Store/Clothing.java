@@ -1,23 +1,37 @@
 package Store;
 //import oop.*;
 
-public class Clothing {
+public abstract class Clothing {
     // private variables 
+    private String type;
     private int size;
     private String colour;
+    private double price;
 
-    public Clothing(int clothSize, String clothColour){
-        this.size = clothSize;
-        this.colour = clothColour;
+    public Clothing(String clothType, int clothSize, String clothColour, double clothPrice){
+        type = clothType;
+        size = clothSize;
+        colour = clothColour;
+        price = clothPrice;
     }
 
-    public String getSize() {
-        return this.size;
+    public String getType(){
+        return type;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     public String getColour() {
-        return this.colour;
+        return colour;
     }
+
+    public double getPrice(){
+        return price;
+    }
+
+    
 
 
 }
