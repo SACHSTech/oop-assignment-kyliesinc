@@ -7,10 +7,9 @@ public class shoppingCart {
     private int numberOfClothes;
     private double totalPrice;
     private boolean cartEmpty;
-    private ArrayList<String> listClothes = new ArrayList<String>();
+    private ArrayList<Clothing> listClothes = new ArrayList<Clothing>();
 
-    public shoppingCart(int numberOfClothes, double totalPrice, boolean emptyCart, ArrayList<String> listClothes){
-
+    public shoppingCart(int numberOfClothes, double totalPrice, boolean emptyCart, ArrayList<Clothing> listClothes){
         this.numberOfClothes = numberOfClothes;
         this.totalPrice = totalPrice;
         this.cartEmpty = emptyCart;
@@ -21,24 +20,22 @@ public class shoppingCart {
         return this.numberOfClothes;
     }
 
-    public double getTotalPrice(){
-        return this.totalPrice;
-    }
-
     public boolean isCartEmpty(){
         return this.cartEmpty;
     }
 
-    public ArrayList<String> listClothes(){
+    public ArrayList<Clothing> listClothes(){
         return this.listClothes;
     }
 
-    public void removeToCart(){
-        // remove a clothing from the cart
+    public void addtoCart(Clothing newClothing){
+        // add a clothing to the cart
+        listClothes.add(newClothing);
+        totalPrice += newClothing.getPrice();
     }
 
-    public void addtoCart(){
-        // add a clothing to the cart
+    public double getTotalPrice(){
+        return totalPrice;
     }
 
     public void getTotals(){
