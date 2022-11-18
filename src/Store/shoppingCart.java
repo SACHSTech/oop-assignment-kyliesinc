@@ -16,7 +16,7 @@ public class shoppingCart {
         this.cartEmpty = emptyCart;
         this.listClothes = listClothes;
 
-        customer = new Customer(name);
+        customer = getName();
 
     }
 
