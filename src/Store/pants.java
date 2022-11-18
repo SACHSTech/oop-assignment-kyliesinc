@@ -10,23 +10,12 @@ public class Pants extends Clothing{
     public Pants(String clothType, String clothColour, double clothPrice, String pantSize, String pantType){
         super(clothType, clothColour, clothPrice);  
         this.pSize = pantSize;
-        this.pType = pantType;
-        //this.pColour = clothColour;
-        //this.pPrice = clothPrice;
-          
+        this.pType = pantType;          
     }
 
     public String getSize(){
         return this.pSize;
     }
-
-    //public String getPantColour(){
-      //  return this.pColour;
-    //}
-
-    //public double getPantPrice(){
-     //   return this.pPrice;
-    //}
 
     public String getType(){
         return this.pType;

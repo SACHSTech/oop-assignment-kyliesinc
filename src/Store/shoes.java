@@ -20,6 +20,6 @@ public class Shoes extends Clothing {
     }
     
     public String toString(){
-        return "...";
+        return ("Shoes description: " + sModel + ", " + sSize);
     }
 }

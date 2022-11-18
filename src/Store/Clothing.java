@@ -25,10 +25,4 @@ public abstract class Clothing {
     public double getPrice(){
         return price;
     }
-
-     
-
-    
-
-
 }
