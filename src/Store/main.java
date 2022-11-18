@@ -61,7 +61,7 @@ public class main {
         double totalPrice = 0.00;
         boolean cartEmpty = true;
         ArrayList<Clothing> listClothes = null;
-        DecimalFormat priceFormat = new DecimalFormat("0.00");
+        DecimalFormat priceFormat = new DecimalFormat("$0.00");
 
         
         System.out.println("----------------------------------------------------");
@@ -86,19 +86,13 @@ public class main {
 
         // print out what the user is able to do
         System.out.println("\nPage: \n- Shop\n- View cart");
-
-        // create products
-
-        
-
-        // loop while shopping
-
-        while (isShopping == true);
-
+      
+        // loop for shopping
+        if (isShopping == true);
             System.out.print("\nChoose an page: ");
             page = keyboard.readLine();
-
-            if (page.equalsIgnoreCase("Shop")){
+        
+                if (page.equalsIgnoreCase("Shop")){
                 // ask if user wants to shops in shoes, tops, or pants
                 System.out.println("\nClothing Type: \n- Pants \n- Tops \n- Shoes");
                 System.out.print("\nPick a clothing type listed above: ");
@@ -110,10 +104,12 @@ public class main {
 
                 // user picks pants
                 if (clothType.equalsIgnoreCase("Pants")){
+                    System.out.println("---------------------------------------------");
                     //user picks type of pants: cargo, sweatpants, or shorts
                     System.out.println("\nPants Options: \n- Cargo Pants ($30.99)\n- Sweatpants ($25.99)\n- Shorts ($15.99)");
                     System.out.print("\nChoose from pants: ");
                     pType = keyboard.readLine();
+
                     // based on type of pants set price 
                     if (pType.equalsIgnoreCase("Cargo pants")){
                         clothPrice = 30.50;
@@ -124,50 +120,95 @@ public class main {
                     else if (pType.equalsIgnoreCase("shorts")){
                         clothPrice = 15.99;
                     }
-                    
-
+                
                     // user input colour 
                     System.out.println("Colour options: white, black, beige, green");
                     System.out.print("\nChoose a colour for your pants: ");
                     pColour = keyboard.readLine();
+
                     // user input size
                     System.out.print("\nChoose size for pants (small, medium, large): ");
                     pSize = keyboard.readLine();
-
-                    Pants newPants =  new Pants(clothType, pColour, clothPrice, pSize, pType); 
-                    System.out.println("\n" + newPants.toString() + ", " + priceFormat.format(newPants.getPrice()));
                     
+
+                    // output user's chosen pant
+                    Pants newPants =  new Pants(clothType, pColour, clothPrice, pSize, pType); 
+                    System.out.println("\n" + newPants.toString() + ", " + pColour + ", " + priceFormat.format(newPants.getPrice()));
+                    
+                    // add this pants to the current total price
                     totalPrice += clothPrice;
-
-                    //System.out.println("total price: $" + totalPrice);
-
-
-
-
 
                 }
                 // user picks tops
                 else if (clothType.equalsIgnoreCase("Tops")){
+                    System.out.println("---------------------------------------------");
                     // tanks, short sleeve, long sleeve
-                    System.out.println("\nTops Options: \n- TankTops \n- short sleeves \n- Long sleeves");
+                    System.out.println("\nTops Options: \n- TankTop \n- short sleeve \n- Long sleeve");
                     System.out.print("\nChoose from tops: ");
                     tType = keyboard.readLine();
 
-                    System.out.println("Colour options: white, black, pink, brown");
-                    System.out.print("Choose a colour for your pants: ");
+                    // based on type of top set price 
+                    if (tType.equalsIgnoreCase("Tanktop")){
+                        clothPrice = 9.99;
+                    }
+                    else if (tType.equalsIgnoreCase("short sleeve")){
+                        clothPrice = 12.50;
+                    }
+                    else if (tType.equalsIgnoreCase("long sleeve")){
+                        clothPrice = 15.95;
+                    }
 
+                    System.out.println("Colour options: white, black, pink, brown");
+                    System.out.print("\nChoose a colour for your top: ");
+                    tColour = keyboard.readLine();
+
+                    // user input size
+                    System.out.print("\nChoose size for top (small, medium, large): ");
+                    tSize = keyboard.readLine();
+
+                    // output user's chosen top
+                    Tops newTop =  new Tops(clothType, tColour, clothPrice, tSize, tType); 
+                    System.out.println("\n"  + newTop.toString() + ", " + tColour + ", " + priceFormat.format(newTop.getPrice()));
+                    
+                    // add this top to the current total price
+                    totalPrice += clothPrice;
 
 
                 }
                 // user picks shoes
                 else if (clothType.equalsIgnoreCase("Shoes")){
                     // (running, boots, sandals)
-                    System.out.println("\nShoes Options: \n- Running \n- Boots \n- Sandals");
+                    System.out.println("---------------------------------------------");
+                    System.out.println("\nShoes Options: \n- Runners \n- Boots \n- Sandals");
                     System.out.print("\nChoose from Shoes: ");
                     sModel = keyboard.readLine();
 
+                    // based on model of shoes set price 
+                    if (sModel.equalsIgnoreCase("runners")){
+                        clothPrice = 64.99;
+                    }
+                    else if (sModel.equalsIgnoreCase("boots")){
+                        clothPrice = 110.50;
+                    }
+                    else if (sModel.equalsIgnoreCase("sandals")){
+                        clothPrice = 30.32;
+                    }
+
                     System.out.println("Colour options: white, black, blue, red");
-                    System.out.print("Choose a colour for your pants: ");
+                    System.out.print("Choose a colour for your shoes: ");
+                    sColour = keyboard.readLine();
+
+                    // user input size
+                    System.out.print("\nChoose size for top (US womens 5-13): ");
+                    sSize = Double.parseDouble(keyboard.readLine());
+
+                    // output user's chosen pant
+                    Shoes newShoes =  new Shoes(clothType, sColour, clothPrice, sSize, sModel); 
+                    System.out.println("\n" + newShoes.toString() + ", " + sColour + ", " + priceFormat.format(newShoes.getPrice()));
+                    
+                    // add this pants to the current total price
+                    totalPrice += clothPrice;
+
 
                 }
             }
