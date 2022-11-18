@@ -36,20 +36,26 @@ public class main {
         String email;
         String page;
         boolean isShopping = true;
-        String clothingType;
+
+        String clothType;
+        double clothPrice = 0.00;
+        String clothColour;
 
         String type;
         String colour;
         double price;
 
-        int pSize;
+        String pSize;
         String pType;
+        String pColour;
 
         String tSize;
         String tType;
+        String tColour;
 
         double sSize;
         String sModel;
+        String sColour;
 
         int numberOfClothes = 0;
         double totalPrice = 0.00;
@@ -57,11 +63,12 @@ public class main {
         ArrayList<Clothing> listClothes = null;
         DecimalFormat priceFormat = new DecimalFormat("0.00");
 
-        // ask user for information
+        
         System.out.println("----------------------------------------------------");
         System.out.println("------ WELCOME TO KYLIE's CLOTHING STORE -----");
         System.out.println("----------------------------------------------------");
 
+        // ask user for information
         System.out.println("\n To continue shopping please fill out your information");
         System.out.print("\n Name: ");
         user = keyboard.readLine();
@@ -79,6 +86,9 @@ public class main {
 
         // print out what the user is able to do
         System.out.println("\nPage: \n- Shop\n- View cart");
+
+        // create products
+
         
 
         // loop while shopping
@@ -92,21 +102,50 @@ public class main {
                 // ask if user wants to shops in shoes, tops, or pants
                 System.out.println("\nClothing Type: \n- Pants \n- Tops \n- Shoes");
                 System.out.print("\nPick a clothing type listed above: ");
-                clothingType = keyboard.readLine();
+                clothType = keyboard.readLine();
+
+
 
                 // based on what type of clothing was chosen list what is available
-                if (clothingType.equalsIgnoreCase("Pants")){
-                    //(cargo, sweatpants, shorts)
-                    System.out.println("\nPants Options: \n- Cargo Pants \n- Sweatpants \n- Shorts");
+
+                // user picks pants
+                if (clothType.equalsIgnoreCase("Pants")){
+                    //user picks type of pants: cargo, sweatpants, or shorts
+                    System.out.println("\nPants Options: \n- Cargo Pants ($30.50)\n- Sweatpants ($25.00)\n- Shorts ($15.99)");
                     System.out.print("\nChoose from pants: ");
                     pType = keyboard.readLine();
+                    // based on type of pants set price 
+                    if (pType.equalsIgnoreCase("Cargo pants")){
+                        clothPrice = 30.50;
+                    }
+                    else if (pType.equalsIgnoreCase("sweatpants")){
+                        clothPrice = 25.00;
+                    }
+                    else if (pType.equalsIgnoreCase("shorts")){
+                        clothPrice = 15.99;
+                    }
+                    
 
+                    // user input colour 
                     System.out.println("Colour options: white, black, beige, green");
-                    System.out.print("Choose a colour for your pants: ");
+                    System.out.print("\nChoose a colour for your pants: ");
+                    pColour = keyboard.readLine();
+                    // user input size
+                    System.out.print("Choose size for pants (small, medium, large): ");
+                    pSize = keyboard.readLine();
+
+                    Pants newPants =  new Pants(clothType, pColour, clothPrice, pSize, pType); 
+                    System.out.println("\n" + newPants.toString() + " added to cart");
+                    
+                    totalPrice += clothPrice;
+
+
+
 
 
                 }
-                else if (clothingType.equalsIgnoreCase("Tops")){
+                // user picks tops
+                else if (clothType.equalsIgnoreCase("Tops")){
                     // tanks, short sleeve, long sleeve
                     System.out.println("\nTops Options: \n- TankTops \n- short sleeves \n- Long sleeves");
                     System.out.print("\nChoose from tops: ");
@@ -118,7 +157,8 @@ public class main {
 
 
                 }
-                else if (clothingType.equalsIgnoreCase("Shoes")){
+                // user picks shoes
+                else if (clothType.equalsIgnoreCase("Shoes")){
                     // (running, boots, sandals)
                     System.out.println("\nShoes Options: \n- Running \n- Boots \n- Sandals");
                     System.out.print("\nChoose from Shoes: ");
