@@ -1,6 +1,8 @@
 package Store;
 //import oop.*;
 
+import java.util.ArrayList;
+
 public abstract class Clothing {
     // private variables 
     private String type;
