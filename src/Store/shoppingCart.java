@@ -4,16 +4,24 @@ import java.util.ArrayList;
 public class shoppingCart {
     
     // instance variables
+    private Customer customer;
     private int numberOfClothes;
     private double totalPrice;
     private boolean cartEmpty;
     private ArrayList<Clothing> listClothes = new ArrayList<Clothing>();
 
-    public shoppingCart(int numberOfClothes, double totalPrice, boolean emptyCart, ArrayList<Clothing> listClothes){
+    public shoppingCart(String name, int numberOfClothes, double totalPrice, boolean emptyCart, ArrayList<Clothing> listClothes){
         this.numberOfClothes = numberOfClothes;
         this.totalPrice = totalPrice;
         this.cartEmpty = emptyCart;
         this.listClothes = listClothes;
+
+        customer = new Customer(name);
+
+    }
+
+    public Customer getName(){
+        return this.customer;
     }
 
     public int getNumerOfClothes(){
@@ -29,13 +37,13 @@ public class shoppingCart {
     }
 
     public void addtoCart(Clothing newClothing){
-        // add a clothing to the cart
+        // add a clothing to the cart and adds the price of the new clothing to the total price
         listClothes.add(newClothing);
         totalPrice += newClothing.getPrice();
     }
 
     public double getTotalPrice(){
-        return totalPrice;
+        return this.totalPrice;
     }
 
     public void getTotals(){
