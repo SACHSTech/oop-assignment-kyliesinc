@@ -93,12 +93,12 @@ public class main {
 
         // loop while shopping
 
-        if (isShopping == true);
+        while (isShopping == true);
 
             System.out.print("\nChoose an page: ");
             page = keyboard.readLine();
 
-            if(page.equalsIgnoreCase("Shop")){
+            if (page.equalsIgnoreCase("Shop")){
                 // ask if user wants to shops in shoes, tops, or pants
                 System.out.println("\nClothing Type: \n- Pants \n- Tops \n- Shoes");
                 System.out.print("\nPick a clothing type listed above: ");
@@ -111,7 +111,7 @@ public class main {
                 // user picks pants
                 if (clothType.equalsIgnoreCase("Pants")){
                     //user picks type of pants: cargo, sweatpants, or shorts
-                    System.out.println("\nPants Options: \n- Cargo Pants ($30.50)\n- Sweatpants ($25.00)\n- Shorts ($15.99)");
+                    System.out.println("\nPants Options: \n- Cargo Pants ($30.99)\n- Sweatpants ($25.99)\n- Shorts ($15.99)");
                     System.out.print("\nChoose from pants: ");
                     pType = keyboard.readLine();
                     // based on type of pants set price 
@@ -131,13 +131,15 @@ public class main {
                     System.out.print("\nChoose a colour for your pants: ");
                     pColour = keyboard.readLine();
                     // user input size
-                    System.out.print("Choose size for pants (small, medium, large): ");
+                    System.out.print("\nChoose size for pants (small, medium, large): ");
                     pSize = keyboard.readLine();
 
                     Pants newPants =  new Pants(clothType, pColour, clothPrice, pSize, pType); 
-                    System.out.println("\n" + newPants.toString() + " added to cart");
+                    System.out.println("\n" + newPants.toString() + ", " + priceFormat.format(newPants.getPrice()));
                     
                     totalPrice += clothPrice;
+
+                    //System.out.println("total price: $" + totalPrice);
 
 
 
