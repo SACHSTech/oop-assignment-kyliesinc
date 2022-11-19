@@ -8,14 +8,17 @@ public class shoppingCart {
     private int numberOfClothes;
     private double totalPrice;
     private boolean cartEmpty;
-    private ArrayList<Clothing> listClothes = new ArrayList<Clothing>();
+    private ArrayList<Tops> listTops = new ArrayList<Tops>();
+    private ArrayList<Pants> listPants = new ArrayList<Pants>();
+    private ArrayList<Shoes> listShoes = new ArrayList<Shoes>();
 
-    public shoppingCart(String name, int numberOfClothes, double totalPrice, boolean emptyCart, ArrayList<Clothing> listClothes){
+    public shoppingCart(String name, int numberOfClothes, double totalPrice, boolean emptyCart, ArrayList<Tops> listTops, ArrayList<Pants> listPants, ArrayList<Shoes> listShoes){
         this.numberOfClothes = numberOfClothes;
         this.totalPrice = totalPrice;
         this.cartEmpty = emptyCart;
-        this.listClothes = listClothes;
-
+        this.listTops = listTops;
+        this.listPants = listPants;
+        this.listShoes = listShoes;
         customer = getName();
 
     }
@@ -32,14 +35,26 @@ public class shoppingCart {
         return this.cartEmpty;
     }
 
-    public ArrayList<Clothing> listClothes(){
-        return this.listClothes;
+    // adding to cart
+    public void addTopsToCart(Tops newTops){
+        listTops.add(newTops);
+    }
+    public void addPantsToCart(Pants newPants){
+        listPants.add(newPants);
+    }
+    public void addShoesToCart(Shoes newShoes){
+        listShoes.add(newShoes);
     }
 
-    public void addtoCart(Clothing newClothing){
-        // add a clothing to the cart and adds the price of the new clothing to the total price
-        listClothes.add(newClothing);
-        totalPrice += newClothing.getPrice();
+    // returning arrayLists
+    public ArrayList<Tops> listTops(){
+        return this.listTops;
+    }
+    public ArrayList<Pants> listPants(){
+        return this.listPants;
+    }
+    public ArrayList<Shoes> listShoes(){
+        return this.listShoes;
     }
 
     public double getTotalPrice(){

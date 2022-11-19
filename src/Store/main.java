@@ -34,7 +34,7 @@ public class main {
         // declare variables 
         String user;
         String email;
-        String page;
+        int page;
         boolean isShopping = true;
 
         String clothType;
@@ -79,28 +79,31 @@ public class main {
         newCustomer = new Customer(user, email);
         newCart = new shoppingCart(email, numberOfClothes, totalPrice, cartEmpty, listClothes);
 
-        System.out.println("\n-------------------------");
+        System.out.println("---------------------------------------------");
         System.out.println("Welcome " + newCustomer.getName());
 
-        System.out.println("Now you can start SHOPPING!");
-
+        System.out.println("Now you can start SHOPPING!");      
         // print out what the user is able to do
-        System.out.println("\nPage: \n- Shop\n- View cart");
+        System.out.println("---------------------------------------------");
+        System.out.println("\nPage: \n1) Shop\n2) View cart");
+        System.out.print("\nChoose an page: ");
+        page = Integer.parseInt(keyboard.readLine());
+
+        // when shop is user input set shopping as true
+
+        // user input view cart, display cart, subtotal, tax, total, 
+
       
         // loop for shopping
-        if (isShopping == true);
-            System.out.print("\nChoose an page: ");
-            page = keyboard.readLine();
-        
-                if (page.equalsIgnoreCase("Shop")){
+        while (isShopping == true){
+
+            if (page == 1){
+                System.out.println("---------------------------------------------");
                 // ask if user wants to shops in shoes, tops, or pants
                 System.out.println("\nClothing Type: \n- Pants \n- Tops \n- Shoes");
                 System.out.print("\nPick a clothing type listed above: ");
                 clothType = keyboard.readLine();
-
-
-
-                // based on what type of clothing was chosen list what is available
+            // based on what type of clothing was chosen list what is available
 
                 // user picks pants
                 if (clothType.equalsIgnoreCase("Pants")){
@@ -122,7 +125,7 @@ public class main {
                     }
                 
                     // user input colour 
-                    System.out.println("Colour options: white, black, beige, green");
+                    System.out.println("\nColour options: white, black, beige, green");
                     System.out.print("\nChoose a colour for your pants: ");
                     pColour = keyboard.readLine();
 
@@ -132,11 +135,25 @@ public class main {
                     
 
                     // output user's chosen pant
+                    Clothing newClothing = new Clothing(clothType, pColour, clothPrice);
                     Pants newPants =  new Pants(clothType, pColour, clothPrice, pSize, pType); 
                     System.out.println("\n" + newPants.toString() + ", " + pColour + ", " + priceFormat.format(newPants.getPrice()));
                     
+                    // add to cart and add to ArrayList of clothing
+                    newClothing.addToCart(newPants.toString());
+
                     // add this pants to the current total price
                     totalPrice += clothPrice;
+                    numberOfClothes ++;
+                    cartEmpty = false;
+
+                    // print out subtotal (before tax) for user to refer to
+                    System.out.println("---------------------------------------------");
+                    System.out.println("Subtotal price: " + priceFormat.format(totalPrice));
+
+                    // reset to home page
+                    page = 0;
+
 
                 }
                 // user picks tops
@@ -158,7 +175,7 @@ public class main {
                         clothPrice = 15.95;
                     }
 
-                    System.out.println("Colour options: white, black, pink, brown");
+                    System.out.println("\nColour options: white, black, pink, brown");
                     System.out.print("\nChoose a colour for your top: ");
                     tColour = keyboard.readLine();
 
@@ -167,11 +184,24 @@ public class main {
                     tSize = keyboard.readLine();
 
                     // output user's chosen top
+                    Clothing newClothing = new Clothing(clothType, tColour, clothPrice);
                     Tops newTop =  new Tops(clothType, tColour, clothPrice, tSize, tType); 
                     System.out.println("\n"  + newTop.toString() + ", " + tColour + ", " + priceFormat.format(newTop.getPrice()));
                     
+                    // add to cart and to the ArrayList of clothing
+
+
                     // add this top to the current total price
                     totalPrice += clothPrice;
+                    numberOfClothes ++;
+                    cartEmpty = false;
+
+                    // print out subtotal (before tax) for user to refer to     
+                    System.out.println("---------------------------------------------");               
+                    System.out.println("Subtotal price: " + priceFormat.format(totalPrice));
+
+                    // reset to home page
+                    page = 0;
 
 
                 }
@@ -194,8 +224,8 @@ public class main {
                         clothPrice = 30.32;
                     }
 
-                    System.out.println("Colour options: white, black, blue, red");
-                    System.out.print("Choose a colour for your shoes: ");
+                    System.out.println("\nColour options: white, black, blue, red");
+                    System.out.print("\nChoose a colour for your shoes: ");
                     sColour = keyboard.readLine();
 
                     // user input size
@@ -203,27 +233,47 @@ public class main {
                     sSize = Double.parseDouble(keyboard.readLine());
 
                     // output user's chosen pant
+                    Clothing newClothing = new Clothing(clothType, sColour, clothPrice);
                     Shoes newShoes =  new Shoes(clothType, sColour, clothPrice, sSize, sModel); 
                     System.out.println("\n" + newShoes.toString() + ", " + sColour + ", " + priceFormat.format(newShoes.getPrice()));
                     
+                    // add to cart and add to ArrayList of clothing
+
+
                     // add this pants to the current total price
                     totalPrice += clothPrice;
+                    numberOfClothes ++;
+                    cartEmpty = false;
 
+                    // print out subtotal (before tax) for user to refer to
+                    System.out.println("---------------------------------------------");
+                    System.out.println("Subotal price: " + priceFormat.format(totalPrice));
 
+                    // reset to home page 
+                    page = 0;
+
+                    
                 }
             }
 
-
-            if(page.equalsIgnoreCase("View cart")){
+            if (page == 2){
+                // display all items 
+                newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listClothes);
+                ArrayList<Clothing>
 
             }
 
+            else if (page == 0){
+                System.out.println("---------------------------------------------");
+
+                // print out what the user is able to do
+                System.out.println("\nPage: \n1) Shop\n2) View cart");
+                System.out.print("\nChoose an page: ");
+                page = Integer.parseInt(keyboard.readLine());
+            }
+
+        }
+
     }
 
-    // display list of all clothing for customer to add to cart
-
-    // go to cart: display what is in cart and cart total and total number of clothing 
-
-
-    
 }
