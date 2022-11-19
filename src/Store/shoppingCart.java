@@ -27,7 +27,7 @@ public class shoppingCart {
         return this.customer;
     }
 
-    public int getNumerOfClothes(){
+    public int getNumberOfClothes(){
         return this.numberOfClothes;
     }
 
@@ -36,16 +36,17 @@ public class shoppingCart {
     }
 
     // adding to cart
-    public void addTopsToCart(Tops newT){
-        listTops.add(newT);
-    }
-    public void addPantsToCart(Pants newP){
-        listPants.add(newP);
-    }
-    public void addShoesToCart(Shoes newS){
-        listShoes.add(newS);
-    }
+    //public void addTopsToCart(Tops newT){
+    //    this.listTops.add(newT);
+    //}
+    //public void addPantsToCart(Pants newP){
+    //    this.listPants.add(newP);
+    //}
+    //public void addShoesToCart(Shoes newS){
+    //    this.listShoes.add(newS);
+    //}
 
+    
     // returning arrayLists
     public ArrayList<Tops> listTops(){
         return this.listTops;

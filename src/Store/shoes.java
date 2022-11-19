@@ -25,6 +25,7 @@ public class Shoes extends Clothing {
         return ("Shoes description: " + sModel + ", " + sSize);
     }
 
-    public void addShoesToCart(ArrayList<Shoes> listShoes) {
+    public void addShoesToCart(String shoeModel) {
+        this.listShoes = shoeModel
     }
 }
