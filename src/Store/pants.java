@@ -4,8 +4,6 @@ package Store;
 public class Pants extends Clothing{
     private String pSize;
     private String pType;
-    //private String pColour;
-    //private double pPrice;
     
     public Pants(String clothType, String clothColour, double clothPrice, String pantSize, String pantType){
         super(clothType, clothColour, clothPrice);  

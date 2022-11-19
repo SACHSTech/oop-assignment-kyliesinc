@@ -2,7 +2,7 @@ package Store;
 //import oop.*;
 
 
-public abstract class Clothing {
+public class Clothing {
     // private variables 
     private String type;
     private String colour;
