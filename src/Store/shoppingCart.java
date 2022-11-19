@@ -36,14 +36,14 @@ public class shoppingCart {
     }
 
     // adding to cart
-    public void addTopsToCart(Tops newTops){
-        listTops.add(newTops);
+    public void addTopsToCart(Tops newT){
+        listTops.add(newT);
     }
-    public void addPantsToCart(Pants newPants){
-        listPants.add(newPants);
+    public void addPantsToCart(Pants newP){
+        listPants.add(newP);
     }
-    public void addShoesToCart(Shoes newShoes){
-        listShoes.add(newShoes);
+    public void addShoesToCart(Shoes newS){
+        listShoes.add(newS);
     }
 
     // returning arrayLists
@@ -60,7 +60,7 @@ public class shoppingCart {
     public double getTotalPrice(){
         return this.totalPrice;
     }
-
+    
     public void getTotals(){
         // output the subtotal, tax, and final price of all clothes in cart
         System.out.println("Subtotal: "+ Math.round((this.totalPrice)*100/100));

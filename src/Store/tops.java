@@ -1,6 +1,8 @@
 package Store;
 //import oop.*;
 
+import java.util.ArrayList;
+
 public class Tops extends Clothing {
     private String tSize;
     private String tType;
@@ -21,5 +23,8 @@ public class Tops extends Clothing {
 
     public String toString(){
         return ("Tops description: " + tType + ", " + tSize);
+    }
+
+    public void addTopsToCart(ArrayList<Tops> listTops) {
     }
 }
