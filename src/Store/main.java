@@ -11,9 +11,9 @@ public class main {
     static BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-
-        // create colour array for clothes
-
+        ArrayList<Tops> listTops = null;
+        ArrayList<Pants> listPants = null;
+        ArrayList<Shoes> listShoes = null;
 
         // declare objects available for customers to buy
         Customer newCustomer;
@@ -60,7 +60,6 @@ public class main {
         int numberOfClothes = 0;
         double totalPrice = 0.00;
         boolean cartEmpty = true;
-        ArrayList<Clothing> listClothes = null;
         DecimalFormat priceFormat = new DecimalFormat("$0.00");
 
         
@@ -77,7 +76,7 @@ public class main {
 
         // creating user
         newCustomer = new Customer(user, email);
-        newCart = new shoppingCart(email, numberOfClothes, totalPrice, cartEmpty, listClothes);
+        newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
 
         System.out.println("---------------------------------------------");
         System.out.println("Welcome " + newCustomer.getName());
@@ -137,10 +136,10 @@ public class main {
                     // output user's chosen pant
                     Clothing newClothing = new Clothing(clothType, pColour, clothPrice);
                     Pants newPants =  new Pants(clothType, pColour, clothPrice, pSize, pType); 
-                    System.out.println("\n" + newPants.toString() + ", " + pColour + ", " + priceFormat.format(newPants.getPrice()));
-                    
-                    // add to cart and add to ArrayList of clothing
-                    newClothing.addToCart(newPants.toString());
+                    System.out.println("\n" + newPants.toString() + ", " + pColour + ", " + priceFormat.format(newPants.getPrice()));                    
+
+                    // add to cart
+                    newPants.addPantsToCart(listPants);
 
                     // add this pants to the current total price
                     totalPrice += clothPrice;
@@ -189,7 +188,7 @@ public class main {
                     System.out.println("\n"  + newTop.toString() + ", " + tColour + ", " + priceFormat.format(newTop.getPrice()));
                     
                     // add to cart and to the ArrayList of clothing
-
+                    newTop.addTopsToCart(listTops);
 
                     // add this top to the current total price
                     totalPrice += clothPrice;
@@ -233,12 +232,11 @@ public class main {
                     sSize = Double.parseDouble(keyboard.readLine());
 
                     // output user's chosen pant
-                    Clothing newClothing = new Clothing(clothType, sColour, clothPrice);
                     Shoes newShoes =  new Shoes(clothType, sColour, clothPrice, sSize, sModel); 
                     System.out.println("\n" + newShoes.toString() + ", " + sColour + ", " + priceFormat.format(newShoes.getPrice()));
                     
                     // add to cart and add to ArrayList of clothing
-
+                    listShoes = newShoes.addShoesToCart(obj);
 
                     // add this pants to the current total price
                     totalPrice += clothPrice;
@@ -254,12 +252,19 @@ public class main {
 
                     
                 }
+                
             }
 
             if (page == 2){
                 // display all items 
-                newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listClothes);
-                ArrayList<Clothing>
+                newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
+                System.out.println(user + "'s Cart: \nTotal Items: " + numberOfClothes + "\nTops: " + listTops + "\nPants: " + listPants + "\nShoes: " + listShoes + "\nSubtotal: " + priceFormat.format(totalPrice));
+                System.out.print("Want to continue shopping or pay?");
+                String shoppingorpay = keyboard.readLine();
+                if (shoppingorpay.equalsIgnoreCase("continue shopping")){
+                    page = 0;
+                }
+                
 
             }
 
