@@ -3,6 +3,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
 
+/**
+ * Main File
+ * @author: K. Sinclair
+ * 
+ */
+
 
 public class main {
 
