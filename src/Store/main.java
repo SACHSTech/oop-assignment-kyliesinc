@@ -11,12 +11,12 @@ public class main {
     static BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-        String[] arrlistTops = {""};
-        String[] arrlistPants = {""};
-        String[] arrlistShoes = {""};
-        //ArrayList<Tops> listTops = {""};
-        //ArrayList<Pants> listPants;
-        //ArrayList<Shoes> listShoes;
+        //String[] arrlistTops = {""};
+        //String[] arrlistPants = {""};
+        //String[] arrlistShoes = {""};
+        ArrayList<String> listTops = new ArrayList<>();
+        ArrayList<String> listPants = new ArrayList<>();
+        ArrayList<String> listShoes = new ArrayList<>();
 
         // declare objects available for customers to buy
         Customer newCustomer;
@@ -140,12 +140,11 @@ public class main {
                     Pants newPants =  new Pants(clothType, pColour, clothPrice, pSize, pType); 
                     System.out.println("\n" + newPants.toString() + ", " + pColour + ", " + priceFormat.format(newPants.getPrice()));                    
 
-                    // add to cart
-                    arrlistPants.add(pType);
-                    newPants.addPantsToCart(listPants);
+                    // add to cart and to array list of pants
+                    newCart.addTopsToCart(pType);
 
                     // add this pants to the current total price
-                    totalPrice += clothPrice;
+                    totalPrice += newClothing.getPrice();
                     numberOfClothes ++;
                     cartEmpty = false;
 
@@ -190,11 +189,11 @@ public class main {
                     Tops newTop =  new Tops(clothType, tColour, clothPrice, tSize, tType); 
                     System.out.println("\n"  + newTop.toString() + ", " + tColour + ", " + priceFormat.format(newTop.getPrice()));
                     
-                    // add to cart and to the ArrayList of clothing
-                    newCart.addTopsToCart(newTop);
+                    // add to cart and to the ArrayList of tops
+                    newCart.addTopsToCart(tType);
 
                     // add this top to the current total price
-                    totalPrice += clothPrice;
+                    totalPrice += newClothing.getPrice();
                     numberOfClothes ++;
                     cartEmpty = false;
 
@@ -238,12 +237,12 @@ public class main {
                     Shoes newShoes =  new Shoes(clothType, sColour, clothPrice, sSize, sModel); 
                     System.out.println("\n" + newShoes.toString() + ", " + sColour + ", " + priceFormat.format(newShoes.getPrice()));
                     
-                    newShoes.addShoesToCart(newCart.listShoes(), sModel);
-                    // add to cart and add to ArrayList of clothing
-                    //listShoes = newShoes.addShoesToCart(Object);
+                    // add to cart and add to ArrayList of shoes
+                    newCart.addTopsToCart(sModel);
+
 
                     // add this pants to the current total price
-                    totalPrice += clothPrice;
+                    totalPrice += newClothing.getPrice();
                     numberOfClothes ++;
                     cartEmpty = false;
 
@@ -260,10 +259,12 @@ public class main {
             }
 
             if (page == 2){
-                // display all items 
                 newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
 
-                System.out.println(user + "'s Cart: \nTotal Items: " + newCart.getNumberOfClothes() + "\nTops: " + newCart.listTops() + "\nPants: " + newCart.listPants() + "\nShoes: " + newCart.listShoes() + "\nSubtotal: " + priceFormat.format(newCart.getTotalPrice()));
+                System.out.println("---------------------------------------------");
+
+                // output cart and all clothes in the cart
+                System.out.println("\n" + user + "'s Cart: \nTotal Items: " + newCart.getNumberOfClothes() + "\nTops: " + newCart.listTops() + "\nPants: " + newCart.listPants() + "\nShoes: " + newCart.listShoes() + "\nSubtotal: " + priceFormat.format(newCart.getTotalPrice()));
                 System.out.print("Want to continue shopping or pay?");
                 String shoppingorpay = keyboard.readLine();
                 if (shoppingorpay.equalsIgnoreCase("continue shopping")){
