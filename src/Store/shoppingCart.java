@@ -1,18 +1,22 @@
 package Store;
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 public class shoppingCart {
+    // decimal format
+    DecimalFormat dFormat = new DecimalFormat("$0.00");
     
     // instance variables
+
     private Customer customer;
     private int numberOfClothes;
     private double totalPrice;
     private boolean cartEmpty;
-    private ArrayList<Tops> listTops = new ArrayList<Tops>();
-    private ArrayList<Pants> listPants = new ArrayList<Pants>();
-    private ArrayList<Shoes> listShoes = new ArrayList<Shoes>();
+    private ArrayList<String> listTops = new ArrayList<String>();
+    private ArrayList<String> listPants = new ArrayList<String>();
+    private ArrayList<String> listShoes = new ArrayList<String>();
 
-    public shoppingCart(String name, int numberOfClothes, double totalPrice, boolean emptyCart, ArrayList<Tops> listTops, ArrayList<Pants> listPants, ArrayList<Shoes> listShoes){
+    public shoppingCart(String name, int numberOfClothes, double totalPrice, boolean emptyCart, ArrayList<String> listTops, ArrayList<String> listPants, ArrayList<String> listShoes){
         this.numberOfClothes = numberOfClothes;
         this.totalPrice = totalPrice;
         this.cartEmpty = emptyCart;
@@ -36,37 +40,45 @@ public class shoppingCart {
     }
 
     // adding to cart
-    //public void addTopsToCart(Tops newT){
-    //    this.listTops.add(newT);
-    //}
-    //public void addPantsToCart(Pants newP){
-    //    this.listPants.add(newP);
-    //}
-    //public void addShoesToCart(Shoes newS){
-    //    this.listShoes.add(newS);
-    //}
+    public ArrayList<String> addTopsToCart(String tType){
+        listTops.add(tType);
+        return listTops;
+    }
+    public ArrayList<String> addPantsToCart(String tPants){
+        listPants.add(tPants);
+        return listPants;
+    }
+    public ArrayList<String> addShoesToCart(String sModel){
+        listShoes.add(sModel);
+        return listShoes;
+    }
 
     
     // returning arrayLists
-    public ArrayList<Tops> listTops(){
+    public ArrayList<String> listTops(){
         return this.listTops;
     }
-    public ArrayList<Pants> listPants(){
+    public ArrayList<String> listPants(){
         return this.listPants;
     }
-    public ArrayList<Shoes> listShoes(){
+    public ArrayList<String> listShoes(){
         return this.listShoes;
     }
 
+    // return total price
     public double getTotalPrice(){
         return this.totalPrice;
     }
     
     public void getTotals(){
         // output the subtotal, tax, and final price of all clothes in cart
-        System.out.println("Subtotal: "+ Math.round((this.totalPrice)*100/100));
-        System.out.println("Tax: "+ Math.round((this.totalPrice*0.13)*100/100));
-        System.out.println("Total: "+ Math.round((this.totalPrice*1.13)*100)/100);
+        System.out.println("Subtotal: "+ dFormat.format((this.totalPrice)*100/100));
+        System.out.println("Tax: "+ dFormat.format((this.totalPrice*0.13)*100/100));
+        System.out.println("------------------------------------");
+        System.out.println("Total: "+ dFormat.format((this.totalPrice*1.13)*100/100));
+        System.out.println("------------------------------------");
+
+
     }
 
 
