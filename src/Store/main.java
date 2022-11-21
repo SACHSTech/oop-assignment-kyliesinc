@@ -51,15 +51,19 @@ public class main {
         String pSize;
         String pType;
         String pColour;
+        int addPants;
 
         String tSize;
         String tType;
         String tColour;
+        int addTop;
 
         double sSize;
         String sModel;
         String sColour;
+        int addShoe;
 
+        int payOrShop;
         int numberOfClothes = 0;
         double totalPrice = 0.00;
         boolean cartEmpty = true;
@@ -140,13 +144,26 @@ public class main {
                     Pants newPants =  new Pants(clothType, pColour, clothPrice, pSize, pType); 
                     System.out.println("\n" + newPants.toString() + ", " + pColour + ", " + priceFormat.format(newPants.getPrice()));                    
 
-                    // add to cart and to array list of pants
-                    newCart.addTopsToCart(pType);
+                    System.out.print("\n Want to add this to your cart? \n(1)Yes \n(2)No, continue shopping \n(3)Home page \n Pick one of the above: ");
+                    addPants = Integer.parseInt(keyboard.readLine());
+                    if (addPants == 1){
+                        // add to cart and add to ArrayList of shoes
+                        newCart.addPantsToCart(pType);
 
-                    // add this pants to the current total price
-                    totalPrice += newClothing.getPrice();
-                    numberOfClothes ++;
-                    cartEmpty = false;
+                        // add this pants to the current total price
+                        totalPrice += newClothing.getPrice();
+                        numberOfClothes ++;
+                        cartEmpty = false;
+                        newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
+                    }
+                    else if(addPants == 2){
+                        System.out.println("\n Ok, continue shopping");
+                        page = 1;
+                    }
+                    else{
+                        System.out.println("\n Ok, going to home page");
+                        page = 0;
+                    }
 
                     // print out subtotal (before tax) for user to refer to
                     System.out.println("---------------------------------------------");
@@ -189,13 +206,28 @@ public class main {
                     Tops newTop =  new Tops(clothType, tColour, clothPrice, tSize, tType); 
                     System.out.println("\n"  + newTop.toString() + ", " + tColour + ", " + priceFormat.format(newTop.getPrice()));
                     
-                    // add to cart and to the ArrayList of tops
-                    newCart.addTopsToCart(tType);
 
-                    // add this top to the current total price
-                    totalPrice += newClothing.getPrice();
-                    numberOfClothes ++;
-                    cartEmpty = false;
+                    System.out.print("\n Want to add this to your cart? \n(1)Yes \n(2)No, continue shopping \n(3)Home page \n Pick one of the above: ");
+                    addTop = Integer.parseInt(keyboard.readLine());
+                    if (addTop == 1){
+                        // add to cart and add to ArrayList of shoes
+                        newCart.addTopsToCart(tType);
+
+                        // add this pants to the current total price
+                        totalPrice += newClothing.getPrice();
+                        numberOfClothes ++;
+                        cartEmpty = false;
+                        newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
+
+                    }
+                    else if(addTop == 2){
+                        System.out.println("\n Ok, continue shopping");
+                        page = 1;
+                    }
+                    else{
+                        System.out.println("\n Ok, going to home page");
+                        page = 0;
+                    }
 
                     // print out subtotal (before tax) for user to refer to     
                     System.out.println("---------------------------------------------");               
@@ -234,17 +266,32 @@ public class main {
                     sSize = Double.parseDouble(keyboard.readLine());
 
                     // output user's chosen shoe
+                    Clothing newClothing = new Clothing(clothType, sColour, clothPrice);
                     Shoes newShoes =  new Shoes(clothType, sColour, clothPrice, sSize, sModel); 
                     System.out.println("\n" + newShoes.toString() + ", " + sColour + ", " + priceFormat.format(newShoes.getPrice()));
-                    
-                    // add to cart and add to ArrayList of shoes
-                    newCart.addTopsToCart(sModel);
 
+                    // ask user if they would like to add this item to cart
+                    System.out.print("\n Want to add this to your cart? \n(1)Yes \n(2)No, continue shopping \n(3)Home page \n Pick one of the above: ");
+                    addShoe = Integer.parseInt(keyboard.readLine());
+                    if (addShoe == 1){
+                        // add to cart and add to ArrayList of shoes
+                        newCart.addShoesToCart(sModel);
 
-                    // add this pants to the current total price
-                    totalPrice += newClothing.getPrice();
-                    numberOfClothes ++;
-                    cartEmpty = false;
+                        // add this pants to the current total price
+                        totalPrice += newClothing.getPrice();
+                        numberOfClothes ++;
+                        cartEmpty = false;
+                        //newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
+
+                    }
+                    else if(addShoe == 2){
+                        System.out.println("\n Ok, continue shopping");
+                        page = 1;
+                    }
+                    else{
+                        System.out.println("\n Ok, going to home page");
+                        page = 0;
+                    }
 
                     // print out subtotal (before tax) for user to refer to
                     System.out.println("---------------------------------------------");
@@ -252,8 +299,11 @@ public class main {
 
                     // reset to home page 
                     page = 0;
-
-                    
+  
+                }
+                // if they type wrong word just restart by asking question again
+                else {
+                    page = 1;
                 }
                 
             }
@@ -265,10 +315,39 @@ public class main {
 
                 // output cart and all clothes in the cart
                 System.out.println("\n" + user + "'s Cart: \nTotal Items: " + newCart.getNumberOfClothes() + "\nTops: " + newCart.listTops() + "\nPants: " + newCart.listPants() + "\nShoes: " + newCart.listShoes() + "\nSubtotal: " + priceFormat.format(newCart.getTotalPrice()));
-                System.out.print("Want to continue shopping or pay?");
-                String shoppingorpay = keyboard.readLine();
-                if (shoppingorpay.equalsIgnoreCase("continue shopping")){
-                    page = 0;
+                System.out.print("\nWant to continue shopping or pay? \n(1)Pay or\n(2)Continue shopping: ");
+                payOrShop = Integer.parseInt(keyboard.readLine());
+
+                if (payOrShop == 1){
+                    page = 3;
+
+                }
+                
+                else if (payOrShop == 2){
+                    System.out.println("\nYay more shopping");
+                    page = 1;
+                }
+
+                else{
+                    page = 2;
+                }
+                
+            }
+            else if (page ==3){
+
+                System.out.println("\n----------Checkout-----------\n");
+                newCart.getTotals();
+                System.out.print("Input Amount to Pay: $");
+                Double payed = Double.parseDouble(keyboard.readLine());
+
+                if (payed == ((totalPrice*1.13)*100/100)){
+                    System.out.println("\n ---------------------------------------------\nSucessfully Paid!! Thanks for shopping come again!\n---------------------------------------------");
+                    break;
+                }
+                else {
+                    System.out.println("Payment error, please try again." + ((totalPrice*1.13)*100/100));
+                    page = 3;
+                    
                 }
                 
 
@@ -281,6 +360,10 @@ public class main {
                 System.out.println("\nPage: \n1) Shop\n2) View cart");
                 System.out.print("\nChoose an page: ");
                 page = Integer.parseInt(keyboard.readLine());
+            }
+
+            else{
+                page = 0;
             }
 
         }
