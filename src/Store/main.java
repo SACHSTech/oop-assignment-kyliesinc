@@ -185,24 +185,25 @@ public class main {
                         page = 1;
                     }
 
+                    // get user input colour
                     System.out.println("\nColour options: white, black, pink, brown");
                     System.out.print("\nChoose a colour for your top: ");
                     tColour = keyboard.readLine();
 
-                    // user input size
+                    // get user input size
                     System.out.print("\nChoose size for top (small, medium, large): ");
                     tSize = keyboard.readLine();
 
                     // output user's chosen top
                     Clothing newClothing = new Clothing(clothType, tColour, clothPrice);
                     Tops newTop =  new Tops(clothType, tColour, clothPrice, tSize, tType); 
-
                     System.out.println("---------------------------------------------");               
                     System.out.println("\n"  + newTop.toString() + ", " + tColour + ", " + priceFormat.format(newTop.getPrice()));
-                    
-
+                                        
                     System.out.print("\n Want to add this to your cart? \n(1)Yes \n(2)No, continue shopping \n(3)Home page \n Pick one of the above: ");
                     addTop = Integer.parseInt(keyboard.readLine());
+
+                    // add the top to cart
                     if (addTop == 1){
                         // add to cart and add to ArrayList of shoes
                         newCart.addTopsToCart(tType);
@@ -214,10 +215,12 @@ public class main {
                         newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
 
                     }
+                    // continue shopping, don't add to cart
                     else if(addTop == 2){
                         System.out.println("\n Ok, continue shopping");
                         page = 1;
                     }
+                    // go to home page
                     else{
                         System.out.println("\n Ok, going to home page");
                         page = 0;
@@ -283,8 +286,6 @@ public class main {
                         subTotal += newClothing.getPrice();
                         numberOfClothes ++;
                         cartEmpty = false;
-                        //newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
-
                     }
 
                     // user input to continue shopping
@@ -304,20 +305,18 @@ public class main {
                     System.out.println("Subotal price: " + priceFormat.format(subTotal));
 
                     // reset to home page 
-                    page = 0;
-  
+                    page = 0;  
                 }
+
                 // if they type wrong word just restart by asking question again
                 else {
                     page = 1;
-                }
-                
+                }   
             }
 
             // shopping cart page
             if (page == 2){
                 newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
-
                 System.out.println("---------------------------------------------");
 
                 // output cart and all clothes in the cart
@@ -328,15 +327,12 @@ public class main {
                 // if user wants to pay redirect to checkout page
                 if (payOrShop == 1){
                     page = 3;
-
                 }
-                
                 // if user wants to continue shopping
                 else if (payOrShop == 2){
                     System.out.println("\nYay more shopping");
                     page = 1;
                 }
-
                 // if user input an invalid option, ask question again
                 else{
                     page = 2;
@@ -345,7 +341,6 @@ public class main {
             }
             // checkout page
             else if (page == 3){
-
                 System.out.println("\n----------Checkout-----------");
                 newCart.getTotals();
                 System.out.print("\nInput Amount to Pay: $");
@@ -364,12 +359,10 @@ public class main {
                 // insuccessful payment, allow user to try to input the total again
                 else {
                     System.out.println("\nPayment error, please try again. ");
-                    page = 3;
-                    
-                }
-                
-
+                    page = 3; 
+                } 
             }
+
             // home page
             else if (page == 0){
                 System.out.println("\n---------------------------------------------");
@@ -384,9 +377,6 @@ public class main {
             else{
                 page = 0;
             }
-
         }
-
     }
-
 }
