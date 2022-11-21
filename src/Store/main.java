@@ -2,8 +2,6 @@ package Store;
 import java.io.*;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
-//import oop.*;
-import java.text.Format;
 
 
 public class main {
@@ -12,9 +10,8 @@ public class main {
     static BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-        //String[] arrlistTops = {""};
-        //String[] arrlistPants = {""};
-        //String[] arrlistShoes = {""};
+
+        // declaring array list variables for each type of clothing
         ArrayList<String> listTops = new ArrayList<>();
         ArrayList<String> listPants = new ArrayList<>();
         ArrayList<String> listShoes = new ArrayList<>();
@@ -22,18 +19,6 @@ public class main {
         // declare objects available for customers to buy
         Customer newCustomer;
         shoppingCart newCart;
-            //shoes (running, boots, sandals)
-        Shoes runningShoes;
-        Shoes bootShoes;
-        Shoes sandalShoes;
-            //pants (cargo, sweatpants, shorts)
-        Pants cargoPants;
-        Pants sweatPants;
-        Pants shortPants;
-            //tops(tanktop, tshirt, longsleeve)
-        Tops tankTops;
-        Tops shortTops;
-        Tops longTops;
         
         // declare variables 
         String user;
@@ -43,11 +28,6 @@ public class main {
 
         String clothType;
         double clothPrice = 0.00;
-        String clothColour;
-
-        String type;
-        String colour;
-        double price;
 
         String pSize;
         String pType;
@@ -97,25 +77,23 @@ public class main {
         System.out.print("\nChoose an page: ");
         page = Integer.parseInt(keyboard.readLine());
 
-        // when shop is user input set shopping as true
-
-        // user input view cart, display cart, subtotal, tax, total, 
-
       
         // loop for shopping
         while (isShopping == true){
 
+            // shopping page
             if (page == 1){
                 System.out.println("---------------------------------------------");
+
                 // ask if user wants to shops in shoes, tops, or pants
                 System.out.println("\nClothing Type: \n- Pants \n- Tops \n- Shoes");
                 System.out.print("\nPick a clothing type listed above: ");
                 clothType = keyboard.readLine();
-            // based on what type of clothing was chosen list what is available
 
                 // user picks pants
                 if (clothType.equalsIgnoreCase("Pants")){
                     System.out.println("---------------------------------------------");
+
                     //user picks type of pants: cargo, sweatpants, or shorts
                     System.out.println("\nPants Options: \n- Cargo Pants ($30.99)\n- Sweatpants ($25.99)\n- Shorts ($15.99)");
                     System.out.print("\nChoose from pants: ");
@@ -130,6 +108,11 @@ public class main {
                     }
                     else if (pType.equalsIgnoreCase("shorts")){
                         clothPrice = 15.99;
+                    }
+                    // inputted an invalid pants option, back to shopping page
+                    else{
+                        System.out.println("\nSorry, you inputted an invalid option.");
+                        page = 1;
                     }
                 
                     // user input colour 
@@ -196,8 +179,9 @@ public class main {
                     else if (tType.equalsIgnoreCase("long sleeve")){
                         clothPrice = 15.95;
                     }
+                    // inputted an invalid pants option, back to shopping page
                     else{
-                        System.out.println("\nSorry that is an invalid option.");
+                        System.out.println("\nSorry, you inputted an invalid option.");
                         page = 1;
                     }
 
@@ -212,6 +196,8 @@ public class main {
                     // output user's chosen top
                     Clothing newClothing = new Clothing(clothType, tColour, clothPrice);
                     Tops newTop =  new Tops(clothType, tColour, clothPrice, tSize, tType); 
+
+                    System.out.println("---------------------------------------------");               
                     System.out.println("\n"  + newTop.toString() + ", " + tColour + ", " + priceFormat.format(newTop.getPrice()));
                     
 
@@ -246,7 +232,7 @@ public class main {
 
 
                 }
-                // user picks shoes
+                // User picks shoes
                 else if (clothType.equalsIgnoreCase("Shoes")){
                     // (running, boots, sandals)
                     System.out.println("---------------------------------------------");
@@ -264,11 +250,13 @@ public class main {
                     else if (sModel.equalsIgnoreCase("sandals")){
                         clothPrice = 30.32;
                     }
+                    // model chosen is invalid, back to shopping page
                     else{
                         System.out.println("\nSorry that is an invalid option.");
                         page = 1;
                     }
 
+                    // asks user what colour they want
                     System.out.println("\nColour options: white, black, blue, red");
                     System.out.print("\nChoose a colour for your shoes: ");
                     sColour = keyboard.readLine();
@@ -285,6 +273,8 @@ public class main {
                     // ask user if they would like to add this item to cart
                     System.out.print("\n Want to add this to your cart? \n(1)Yes \n(2)No, continue shopping \n(3)Home page \n Pick one of the above: ");
                     addShoe = Integer.parseInt(keyboard.readLine());
+
+                    // user input to add to cart 
                     if (addShoe == 1){
                         // add to cart and add to ArrayList of shoes
                         newCart.addShoesToCart(sModel);
@@ -296,10 +286,14 @@ public class main {
                         //newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
 
                     }
+
+                    // user input to continue shopping
                     else if(addShoe == 2){
                         System.out.println("\n Ok, continue shopping");
                         page = 1;
                     }
+
+                    // user input go to home page
                     else{
                         System.out.println("\n Ok, going to home page");
                         page = 0;
@@ -320,6 +314,7 @@ public class main {
                 
             }
 
+            // shopping cart page
             if (page == 2){
                 newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
 
@@ -330,52 +325,62 @@ public class main {
                 System.out.print("\nWant to continue shopping or pay? \n(1)Pay or\n(2)Continue shopping: ");
                 payOrShop = Integer.parseInt(keyboard.readLine());
 
+                // if user wants to pay redirect to checkout page
                 if (payOrShop == 1){
                     page = 3;
 
                 }
                 
+                // if user wants to continue shopping
                 else if (payOrShop == 2){
                     System.out.println("\nYay more shopping");
                     page = 1;
                 }
 
+                // if user input an invalid option, ask question again
                 else{
                     page = 2;
                 }
                 
             }
-            else if (page ==3){
+            // checkout page
+            else if (page == 3){
 
                 System.out.println("\n----------Checkout-----------");
                 newCart.getTotals();
                 System.out.print("\nInput Amount to Pay: $");
                 String payed = keyboard.readLine();
+
+                // caluculate total price and convert to a string
                 subTotal = subTotal * 1.13;
                 totalPrice = String.format("%f", dFormat.format(subTotal));
 
-                if (payed == totalPrice){
+                // sucessfully paid if user inputted same number as the total
+                if (payed.equalsIgnoreCase(totalPrice)){
                     System.out.println("\n ---------------------------------------------\nSucessfully Paid!! Thanks for shopping come again!\n---------------------------------------------");
                     break;
                 }
+
+                // insuccessful payment, allow user to try to input the total again
                 else {
-                    System.out.println("\nPayment error, please try again. " + subTotal);
+                    System.out.println("\nPayment error, please try again. ");
                     page = 3;
                     
                 }
                 
 
             }
-
+            // home page
             else if (page == 0){
                 System.out.println("\n---------------------------------------------");
 
-                // print out what the user is able to do
+                // print out what the user is able to do (shop or view cart)
                 System.out.println("\nPage: \n(1) Shop\n(2) View cart");
                 System.out.print("\nChoose an page: ");
                 page = Integer.parseInt(keyboard.readLine());
             }
 
+            // if user has entered an invalid option, back to start of home page
             else{
                 page = 0;
             }

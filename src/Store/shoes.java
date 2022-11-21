@@ -1,7 +1,4 @@
 package Store;
-//import oop.*;
-
-import java.util.ArrayList;
 
 public class Shoes extends Clothing {
     private double sSize;

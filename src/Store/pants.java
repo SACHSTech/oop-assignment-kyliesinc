@@ -1,7 +1,4 @@
 package Store;
-//import oop.*;
-
-import java.util.ArrayList;
 
 public class Pants extends Clothing{
     private String pSize;
