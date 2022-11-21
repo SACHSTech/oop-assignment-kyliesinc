@@ -74,8 +74,7 @@ public class shoppingCart {
         // output the subtotal, tax, and final price of all clothes in cart
         System.out.println("Subtotal: "+ dFormat.format((this.totalPrice)*100/100));
         System.out.println("Tax: "+ dFormat.format((this.totalPrice*0.13)*100/100));
-        System.out.println("------------------------------------");
-        System.out.println("Total: "+ dFormat.format((this.totalPrice*1.13)*100/100));
+        System.out.println("\nTotal: "+ dFormat.format((this.totalPrice*1.13)*100/100));
         System.out.println("------------------------------------");
 
 

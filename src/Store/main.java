@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
 //import oop.*;
+import java.text.Format;
 
 
 public class main {
@@ -65,9 +66,11 @@ public class main {
 
         int payOrShop;
         int numberOfClothes = 0;
-        double totalPrice = 0.00;
+        double subTotal = 0.00;
+        String totalPrice;
         boolean cartEmpty = true;
         DecimalFormat priceFormat = new DecimalFormat("$0.00");
+        DecimalFormat dFormat = new DecimalFormat("0.00");
         
         System.out.println("----------------------------------------------------");
         System.out.println("------ WELCOME TO KYLIE's CLOTHING STORE -----");
@@ -82,7 +85,7 @@ public class main {
 
         // creating user
         newCustomer = new Customer(user, email);
-        newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
+        newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
 
         System.out.println("---------------------------------------------");
         System.out.println("Welcome " + newCustomer.getName());
@@ -146,15 +149,16 @@ public class main {
 
                     System.out.print("\n Want to add this to your cart? \n(1)Yes \n(2)No, continue shopping \n(3)Home page \n Pick one of the above: ");
                     addPants = Integer.parseInt(keyboard.readLine());
+
                     if (addPants == 1){
                         // add to cart and add to ArrayList of shoes
                         newCart.addPantsToCart(pType);
 
                         // add this pants to the current total price
-                        totalPrice += newClothing.getPrice();
+                        subTotal += newClothing.getPrice();
                         numberOfClothes ++;
                         cartEmpty = false;
-                        newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
+                        newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
                     }
                     else if(addPants == 2){
                         System.out.println("\n Ok, continue shopping");
@@ -167,7 +171,7 @@ public class main {
 
                     // print out subtotal (before tax) for user to refer to
                     System.out.println("---------------------------------------------");
-                    System.out.println("Subtotal price: " + priceFormat.format(totalPrice));
+                    System.out.println("Subtotal price: " + priceFormat.format(subTotal));
 
                     // reset to home page
                     page = 0;
@@ -178,7 +182,7 @@ public class main {
                 else if (clothType.equalsIgnoreCase("Tops")){
                     System.out.println("---------------------------------------------");
                     // tanks, short sleeve, long sleeve
-                    System.out.println("\nTops Options: \n- TankTop \n- short sleeve \n- Long sleeve");
+                    System.out.println("\nTops Options: \n- TankTop ($9.99)\n- short sleeve ($12.50)\n- Long sleeve ($15.95)");
                     System.out.print("\nChoose from tops: ");
                     tType = keyboard.readLine();
 
@@ -191,6 +195,10 @@ public class main {
                     }
                     else if (tType.equalsIgnoreCase("long sleeve")){
                         clothPrice = 15.95;
+                    }
+                    else{
+                        System.out.println("\nSorry that is an invalid option.");
+                        page = 1;
                     }
 
                     System.out.println("\nColour options: white, black, pink, brown");
@@ -214,10 +222,10 @@ public class main {
                         newCart.addTopsToCart(tType);
 
                         // add this pants to the current total price
-                        totalPrice += newClothing.getPrice();
+                        subTotal += newClothing.getPrice();
                         numberOfClothes ++;
                         cartEmpty = false;
-                        newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
+                        newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
 
                     }
                     else if(addTop == 2){
@@ -231,7 +239,7 @@ public class main {
 
                     // print out subtotal (before tax) for user to refer to     
                     System.out.println("---------------------------------------------");               
-                    System.out.println("Subtotal price: " + priceFormat.format(totalPrice));
+                    System.out.println("Subtotal price: " + priceFormat.format(subTotal));
 
                     // reset to home page
                     page = 0;
@@ -242,7 +250,7 @@ public class main {
                 else if (clothType.equalsIgnoreCase("Shoes")){
                     // (running, boots, sandals)
                     System.out.println("---------------------------------------------");
-                    System.out.println("\nShoes Options: \n- Runners \n- Boots \n- Sandals");
+                    System.out.println("\nShoes Options: \n- Runners ($64.99) \n- Boots ($110.50)\n- Sandals ($30.32)");
                     System.out.print("\nChoose from Shoes: ");
                     sModel = keyboard.readLine();
 
@@ -255,6 +263,10 @@ public class main {
                     }
                     else if (sModel.equalsIgnoreCase("sandals")){
                         clothPrice = 30.32;
+                    }
+                    else{
+                        System.out.println("\nSorry that is an invalid option.");
+                        page = 1;
                     }
 
                     System.out.println("\nColour options: white, black, blue, red");
@@ -278,10 +290,10 @@ public class main {
                         newCart.addShoesToCart(sModel);
 
                         // add this pants to the current total price
-                        totalPrice += newClothing.getPrice();
+                        subTotal += newClothing.getPrice();
                         numberOfClothes ++;
                         cartEmpty = false;
-                        //newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
+                        //newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
 
                     }
                     else if(addShoe == 2){
@@ -295,7 +307,7 @@ public class main {
 
                     // print out subtotal (before tax) for user to refer to
                     System.out.println("---------------------------------------------");
-                    System.out.println("Subotal price: " + priceFormat.format(totalPrice));
+                    System.out.println("Subotal price: " + priceFormat.format(subTotal));
 
                     // reset to home page 
                     page = 0;
@@ -309,7 +321,7 @@ public class main {
             }
 
             if (page == 2){
-                newCart = new shoppingCart(user, numberOfClothes, totalPrice, cartEmpty, listTops, listPants, listShoes);
+                newCart = new shoppingCart(user, numberOfClothes, subTotal, cartEmpty, listTops, listPants, listShoes);
 
                 System.out.println("---------------------------------------------");
 
@@ -335,17 +347,19 @@ public class main {
             }
             else if (page ==3){
 
-                System.out.println("\n----------Checkout-----------\n");
+                System.out.println("\n----------Checkout-----------");
                 newCart.getTotals();
-                System.out.print("Input Amount to Pay: $");
-                Double payed = Double.parseDouble(keyboard.readLine());
+                System.out.print("\nInput Amount to Pay: $");
+                String payed = keyboard.readLine();
+                subTotal = subTotal * 1.13;
+                totalPrice = String.format("%f", dFormat.format(subTotal));
 
-                if (payed == ((totalPrice*1.13)*100/100)){
+                if (payed == totalPrice){
                     System.out.println("\n ---------------------------------------------\nSucessfully Paid!! Thanks for shopping come again!\n---------------------------------------------");
                     break;
                 }
                 else {
-                    System.out.println("Payment error, please try again." + ((totalPrice*1.13)*100/100));
+                    System.out.println("\nPayment error, please try again. " + subTotal);
                     page = 3;
                     
                 }
@@ -354,10 +368,10 @@ public class main {
             }
 
             else if (page == 0){
-                System.out.println("---------------------------------------------");
+                System.out.println("\n---------------------------------------------");
 
                 // print out what the user is able to do
-                System.out.println("\nPage: \n1) Shop\n2) View cart");
+                System.out.println("\nPage: \n(1) Shop\n(2) View cart");
                 System.out.print("\nChoose an page: ");
                 page = Integer.parseInt(keyboard.readLine());
             }
