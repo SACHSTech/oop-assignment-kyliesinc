@@ -26,7 +26,4 @@ public class Pants extends Clothing{
         return ("Pant description: " + pType + ", " + pSize);
     }
 
-    public void addPantsToCart(ArrayList<Pants> listPants) {
-    }
-
 }

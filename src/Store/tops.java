@@ -11,6 +11,7 @@ public class Tops extends Clothing {
         super(clothType, clothColour, clothPrice);  
         this.tSize = topSize;
         this.tType = topType;
+        
     }
 
     public String getSize(){
@@ -21,10 +22,11 @@ public class Tops extends Clothing {
         return this.tType;
     }
 
+    
+
     public String toString(){
         return ("Tops description: " + tType + ", " + tSize);
     }
 
-    public void addTopsToCart(ArrayList<Tops> listTops) {
-    }
+    
 }
