@@ -3,7 +3,8 @@
 
 [*see instructions for details*](Instructions.md)
 
-*Insert Class Diagram here*  
+![alt text](https://github.com/SACHSTech/oop-assignment-kyliesinc/blob/main/src/Assignment%20Class%20Diagram.drawio.pdf "OOP Assignment Diagram") 
+
 
 ## Summary
-*Include a brief summary that describes your system that your are modelling*
+The system that is being modelled is a simple version of a shopping system. There is a store that the customer is shopping at. Then the customer has a shopping cart that holds all the clothing items that the customer added to the cart. In the cart would be all the clothes, which can be either tops, pants, or shoes. 
