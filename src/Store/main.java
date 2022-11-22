@@ -31,30 +31,32 @@ public class main {
         String email;
         int page;
         boolean isShopping = true;
-
+            // clothing variables
         String clothType;
         double clothPrice = 0.00;
-
+            // pants variables
         String pSize;
         String pType;
         String pColour;
         int addPants;
-
+            // top variables
         String tSize;
         String tType;
         String tColour;
         int addTop;
-
+            // shoe variables
         double sSize;
         String sModel;
         String sColour;
         int addShoe;
-
+            // shopping cart and checkout variables
         int payOrShop;
         int numberOfClothes = 0;
         double subTotal = 0.00;
         String totalPrice;
         boolean cartEmpty = true;
+
+        // decimal formating 
         DecimalFormat priceFormat = new DecimalFormat("$0.00");
         DecimalFormat dFormat = new DecimalFormat("0.00");
         
@@ -75,8 +77,8 @@ public class main {
 
         System.out.println("---------------------------------------------");
         System.out.println("Welcome " + newCustomer.getName());
+        System.out.println("Now you can start SHOPPING!");    
 
-        System.out.println("Now you can start SHOPPING!");      
         // print out what the user is able to do
         System.out.println("---------------------------------------------");
         System.out.println("\nPage: \n1) Shop\n2) View cart");
@@ -130,7 +132,6 @@ public class main {
                     System.out.print("\nChoose size for pants (small, medium, large): ");
                     pSize = keyboard.readLine();
                     
-
                     // output user's chosen pant
                     Clothing newClothing = new Clothing(clothType, pColour, clothPrice);
                     Pants newPants =  new Pants(clothType, pColour, clothPrice, pSize, pType); 
@@ -164,9 +165,8 @@ public class main {
 
                     // reset to home page
                     page = 0;
-
-
                 }
+                
                 // user picks tops
                 else if (clothType.equalsIgnoreCase("Tops")){
                     System.out.println("---------------------------------------------");
@@ -238,9 +238,8 @@ public class main {
 
                     // reset to home page
                     page = 0;
-
-
                 }
+                
                 // User picks shoes
                 else if (clothType.equalsIgnoreCase("Shoes")){
                     // (running, boots, sandals)
@@ -349,12 +348,11 @@ public class main {
             else if (page == 3){
                 System.out.println("\n----------Checkout-----------");
                 newCart.getTotals();
-                System.out.print("\nInput Amount to Pay: $");
+                System.out.print("\nTo pay please press enter: ");
                 String payed = keyboard.readLine();
 
                 // caluculate total price and convert to a string
-                subTotal = subTotal * 1.13;
-                totalPrice = String.format("%f", dFormat.format(subTotal));
+                totalPrice = String.format("", dFormat.format(subTotal * 1.13));
 
                 // sucessfully paid if user inputted same number as the total
                 if (payed.equalsIgnoreCase(totalPrice)){
