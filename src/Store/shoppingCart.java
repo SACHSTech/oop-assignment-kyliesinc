@@ -44,6 +44,7 @@ public class shoppingCart {
     }
 
     /**
+     * Returns the customer's name by using the customer class
      * 
      * @return String variable of name that is found from the Customer class 
      */
@@ -52,6 +53,7 @@ public class shoppingCart {
     }
 
     /**
+     * Returns the total number of clothes in cart
      * 
      * @return int variable numberOfClothes, which is the total number of clothes in the cart
      */
@@ -60,6 +62,7 @@ public class shoppingCart {
     }
 
     /**
+     * Returns whether the cart is empty or not
      * 
      * @return boolean variable isCartEmpty, which is whether cart has any clothes in it or not
      */
@@ -67,29 +70,32 @@ public class shoppingCart {
         return this.cartEmpty;
     }
 
-
+    // adding to cart
     /**
+     * This adds tops to the cart and then returns a list of them
      * 
-     * @param tType
-     * @return 
+     * @param tType - is the type of Top
+     * @return ArrayList<String> listTops, which is the list of type of tops added
      */
     public ArrayList<String> addTopsToCart(String tType){
         listTops.add(tType);
         return listTops;
     }
     /**
+     * This adds pants to the cart and then returns a list of them
      * 
-     * @param tPants
-     * @return 
+     * @param tPants - is the type of pant
+     * @return ArrayList<String> listPants, which is the list of type of pants added
      */
     public ArrayList<String> addPantsToCart(String tPants){
         listPants.add(tPants);
         return listPants;
     }
     /**
+     * This adds shoes to the cart and then returns a list of them
      * 
-     * @param sModel
-     * @return 
+     * @param sModel - is the type of shoes
+     * @return ArrayList<String> listShoes, which is the list of type of shoes added
      */
     public ArrayList<String> addShoesToCart(String sModel){
         listShoes.add(sModel);
@@ -99,6 +105,7 @@ public class shoppingCart {
     
     // returning arrayLists
     /**
+     * Returns the list of tops
      * 
      * @return ArrayList<String> listTops, which is a String list of tops that were added to cart
      */
@@ -106,6 +113,7 @@ public class shoppingCart {
         return this.listTops;
     }
     /**
+     * Returns the list of pants
      * 
      * @return ArrayList<String> listPants, which is a String list of pants that were added to cart
      */
@@ -113,6 +121,7 @@ public class shoppingCart {
         return this.listPants;
     }
     /**
+     * returns the list of shoes
      * 
      * @return ArrayList<String> listShoes, which is a String list of shoes that were added to cart
      */
@@ -120,17 +129,17 @@ public class shoppingCart {
         return this.listShoes;
     }
 
-    // return total price
     /**
+     * Returns the total price of all the clothes in cart
      * 
-     * @return
+     * @return double variable totalPrice, which is the sum of all the clothing's prices
      */
     public double getTotalPrice(){
         return this.totalPrice;
     }
     
     /**
-     * 
+     * This method calculates the subtotal, tax, and total from the totalPrice and outputs it as a print statement
      */
     public void getTotals(){
         // output the subtotal, tax, and final price of all clothes in cart
